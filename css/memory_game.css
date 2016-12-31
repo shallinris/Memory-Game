@@ -1,17 +1,39 @@
 html {
-    background-color: pink;
+    background-color: #7FDBFF;
+
+}
+
+body {
+    margin: 0;
 }
 h1 {
-    /*padding: 20px;*/
-    /*margin-left: 35%;*/
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    color: #FFDC00;
+
 }
+
+.btn {
+    margin-bottom: 10px;
+    transform: translateY(-15%);
+    color: white;
+    padding: 5px;
+    background-color: #001f3f;
+}
+
+.page-header {
+    text-align: center;
+    background-color: #001f3f;
+}
+
 #board {
     display: inline-block;
     vertical-align: top;
-    position: relative;
-    background-color: white;
-    border: 1px solid black;
-    margin-left: 10%;
+    margin-left: 20%;
+    margin-top: 2%;
+
 
 }
 .row{
@@ -26,27 +48,6 @@ h1 {
     display:inline-block;
     margin-top: 5%;
     margin-left:7%;
+    box-shadow: 10px 10px 5px #888888;
 
 }
-/*div#memory_board {*/
-    /*background: #CCC;*/
-    /*border: #999 1px solid;*/
-    /*width: 800px;*/
-    /*height: 540px;*/
-    /*padding: 24px;*/
-    /*margin: 0px auto;*/
-/*}*/
-
-
-/*div#memory_board > div {*/
-/*background: #FF3399;*/
-/*border: #000 1px solid;*/
-/*width: 71px;*/
-/*height: 71px;*/
-/*float: left;*/
-/*margin: 10px;*/
-/*padding: 20px;*/
-/*font-size: 64px;*/
-/*cursor: pointer;*/
-/*text-align: center;*/
-/*}*/

@@ -6,13 +6,15 @@ var MemoryCardGame = {};
 MemoryCardGame.imageArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
 MemoryCardGame.cards_flipped = "";
 MemoryCardGame.num_cards_flipped = 0;
+MemoryCardGame.cards_flipped_counter = 0;
 MemoryCardGame.card1=null;
 MemoryCardGame.card2 = null;
+MemoryCardGame.num_wrong_guesses = 0;
 
 function turnCardsOver(e) {
     MemoryCardGame.cards_flipped = e.target;
     if (MemoryCardGame.num_cards_flipped === 0) {
-        MemoryCardGame.num_cards_flipped++; //why ++ here?
+        MemoryCardGame.num_cards_flipped++;
         MemoryCardGame.card1 = this;
         MemoryCardGame.card1.style.backgroundImage = MemoryCardGame.card1.getAttribute("data-img");
     }
@@ -24,6 +26,7 @@ function turnCardsOver(e) {
 
         if (MemoryCardGame.num_cards_flipped === 2) {
             if (MemoryCardGame.card1.getAttribute("data-img") === MemoryCardGame.card2.getAttribute("data-img")) {
+                MemoryCardGame.cards_flipped_counter ++;
                 MemoryCardGame.num_cards_flipped = 0;
             }
             else {
@@ -31,14 +34,18 @@ function turnCardsOver(e) {
                     MemoryCardGame.card1.style.backgroundImage = "url('./images/texture.jpg')";
                     MemoryCardGame.card2.style.backgroundImage = "url('./images/texture.jpg')";
                     MemoryCardGame.num_cards_flipped = 0;
+                    MemoryCardGame.num_wrong_guesses ++;
                 }
 
                 setTimeout(flipBack, 1000);
             }
         }
-        console.log(MemoryCardGame.num_cards_flipped);
+        if (MemoryCardGame.cards_flipped_counter === 6) {
+            window.alert("You Won! You only had " + MemoryCardGame.num_wrong_guesses + " wrong guesses.");
+        }
     }
 }
+//when no more cards to turn over, print you won!!! you only had memorycardgame numwrong guesses guesses
 
 MemoryCardGame.generateMemoryBoard = (function() {
     var memoryBoard = document.createElement('div');
@@ -86,7 +93,7 @@ MemoryCardGame.generateMemoryBoard = (function() {
 
 }
 MemoryCardGame.imageArray = shuffle(MemoryCardGame.imageArray);
-console.log(MemoryCardGame.imageArray); //this does actually work now
+console.log(MemoryCardGame.imageArray);
 
 function assignShuffledCardsToDivs() {
     //first assign randomized images to card divs
@@ -100,6 +107,9 @@ function assignShuffledCardsToDivs() {
 function startNewGame() {
     assignShuffledCardsToDivs();
     //something needs to go here?
+}
+function refreshPage(){
+    window.location.reload();
 }
 
 function init() {
